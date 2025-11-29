@@ -6,15 +6,15 @@
 }
 
 :root {
-  --azul-institucional: #12385B;   /* más profundo, más corporativo */
+  --azul-institucional: #12385B;
   --azul-oscuro: #0D2A44;
   --azul-claro: #1F5B89;
 
-  --tierra-volcanica: #7A422A;      /* tonos más sobrios */
+  --tierra-volcanica: #7A422A;
   --tierra-oscura: #5A2E1D;
 
   --blanco-cálido: #F4F3EF;
-  --gris-piedra: #444;              /* más contrastado */
+  --gris-piedra: #444;
   --gris-suave: #666;
 
   --verde-esperanza: #2D5D27;
@@ -73,8 +73,7 @@ h2 {
   top: 6px;
 }
 
-/* HERO — versión limpia y profesional */
-/* HERO — fondo arquitectónico difuminado, sin cuadro blanco */
+/* ===== HERO — FONDO ARQUITECTÓNICO DIFUMINADO (CORREGIDO) ===== */
 .hero {
   position: relative;
   height: 100vh;
@@ -85,35 +84,33 @@ h2 {
   text-align: center;
   color: var(--azul-oscuro);
   overflow: hidden;
+  /* Fondo de respaldo mientras carga la imagen */
+  background-color: #f0f2f4;
+  isolation: isolate;
 }
 
-/* Capa de fondo: tu imagen, difuminada y escalada */
+/* Fondo: tu imagen de obra, difuminada y escalada */
 .hero::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('img/fondo-arquitectonico.jpg') no-repeat center center;
-  background-size: cover;
-  filter: blur(10px) brightness(0.9) contrast(1.05);
+  inset: 0; /* shorthand para top:0; right:0; bottom:0; left:0 */
+  background: url('img/fondo-arquitectonico.jpg') center/cover no-repeat;
+  /* ↓ Ajuste clave: menos oscurecimiento, más claridad */
+  filter: blur(10px) brightness(1.0) contrast(1.0);
   z-index: -2;
+  will-change: transform;
 }
 
-/* Capa de velo blanco suave: mejora contraste sin opacar el fondo */
+/* Velo blanco translúcido: mejora legibilidad sin tapar el fondo */
 .hero::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.88);
+  inset: 0;
+  background: rgba(255, 255, 255, 0.82); /* ↓ bajamos de 0.88 a 0.82 para más transparencia */
   z-index: -1;
 }
 
-/* Contenido centrado: logo + texto + botones */
+/* Contenido centrado */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -124,9 +121,10 @@ h2 {
 
 .hero-logo {
   max-height: 400px;
-  margin: 0 auto 1.8rem;
+  max-width: 90%;
   height: auto;
   width: auto;
+  margin: 0 auto 1.8rem;
   filter: none;
 }
 
@@ -143,9 +141,6 @@ h2 {
   margin-bottom: 2.2rem;
   color: var(--gris-suave);
   font-weight: 300;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* BOTONES */
@@ -176,9 +171,11 @@ h2 {
 }
 
 /* POR QUÉ DICOIL */
-.por-que {
-  padding: 100px 0;
-  background-color: var(--blanco-cálido);
+.por-que h2 {
+  text-align: center; /* ← esto centra el título */
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+  color: var(--azul-institucional);
 }
 
 .subtitle {
@@ -407,7 +404,9 @@ h2 {
   .hero-content { padding: 3rem 2rem; }
   .hero-logo { 
     max-height: 110px;
-    min-height: 80px; /* ← clave: nunca se achica demasiado */
+    max-width: 90%;
+    height: auto;
+    width: auto;
   }
   .hero-subtitle { font-size: 1.15rem; }
   .contacto-grid { grid-template-columns: 1fr; }
@@ -418,8 +417,10 @@ h2 {
   .hero h1 { font-size: 2.1rem; }
   .hero-content { padding: 2.5rem 1.5rem; }
   .hero-logo { 
-    max-height: 90px;
-    min-height: 70px;
+    max-height: 220px;
+    max-width: 85%;
+    height: auto;
+    width: auto;
   }
   .btn { padding: 12px 22px; font-size: 0.95rem; }
   .valores-grid { gap: 1.5rem; }
