@@ -1,0 +1,426 @@
+/* Reset y variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --azul-institucional: #1A3A5F;
+  --tierra-volcanica: #8C4A2E;
+  --blanco-cálido: #F9F7F3;
+  --gris-piedra: #5A5A5A;
+  --verde-esperanza: #2D5D27;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: var(--gris-piedra);
+  background-color: #fff;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Skip link (accesibilidad) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--azul-institucional);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1001;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1600585154084-4e5b10f5c710?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.hero-content {
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.hero-logo {
+  max-height: 80px;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.hero-subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  color: rgba(255,255,255,0.92);
+  font-weight: 300;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--azul-institucional);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: var(--tierra-volcanica);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ¿Por qué DICOIL? */
+.por-que {
+  padding: 80px 0;
+  background-color: var(--blanco-cálido);
+}
+
+.por-que h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--azul-institucional);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--gris-piedra);
+  margin-bottom: 3rem;
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.valor {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.valor:hover {
+  transform: translateY(-5px);
+}
+
+.valor-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.valor h3 {
+  font-size: 1.5rem;
+  color: var(--azul-institucional);
+  margin-bottom: 1rem;
+}
+
+/* Obras Públicas */
+.obras-publicas {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.obras-publicas h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--azul-institucional);
+}
+
+.galeria-obras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.obra-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.obra-card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.obra-img {
+  height: 200px;
+  background: linear-gradient(135deg, var(--azul-institucional), #2c5282);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.obra-img.cba::before {
+  content: "Edif. CBA\nAmbato";
+  white-space: pre;
+}
+
+.obra-img.sangolqui::before {
+  content: "Registro\nSangolquí";
+  white-space: pre;
+}
+
+.obra-info {
+  padding: 1.5rem;
+}
+
+.obra-info h3 {
+  font-size: 1.4rem;
+  color: var(--azul-institucional);
+  margin-bottom: 0.5rem;
+}
+
+.cliente {
+  font-weight: 500;
+  color: var(--gris-piedra);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.obra-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.tag {
+  background-color: var(--blanco-cálido);
+  color: var(--gris-piedra);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.btn-secundario {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--tierra-volcanica);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* El Legado */
+.legado {
+  padding: 100px 0;
+  background-color: var(--blanco-cálido);
+  text-align: center;
+}
+
+.legado-texto {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.legado-texto p {
+  margin-bottom: 1.25rem;
+}
+
+.legado-texto strong {
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--azul-institucional);
+}
+
+/* Contacto */
+.contacto {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.contacto h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  color: var(--azul-institucional);
+  margin-bottom: 1rem;
+}
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.contacto-info h3 {
+  font-size: 1.6rem;
+  color: var(--azul-institucional);
+  margin-bottom: 1rem;
+}
+
+.contacto-info p {
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.mapa-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Pie */
+.pie {
+  background-color: var(--azul-institucional);
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* WhatsApp Flotante */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  z-index: 1000;
+  text-decoration: none;
+  display: none;
+}
+
+/* Enfoque para accesibilidad */
+:focus {
+  outline: 3px solid var(--verde-esperanza);
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+  }
+
+  .whatsapp-float {
+    display: flex;
+  }
+
+  .obra-img {
+    height: 160px;
+  }
+
+  .legado-texto {
+    padding: 0 20px;
+    font-size: 1.1rem;
+  }
+
+  .contacto-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-logo {
+    max-height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.0rem;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+}

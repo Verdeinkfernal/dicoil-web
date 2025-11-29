@@ -1,0 +1,11 @@
+# Archivos temporales
+*.tmp
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Entornos locales (si usas más adelante)
+node_modules/
+.env
