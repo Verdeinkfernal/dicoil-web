@@ -73,11 +73,15 @@ h1, h2, h3 {
   z-index: 2;
   max-width: 900px;
   padding: 0 20px;
+  text-align: center; /* ← asegura centrado total */
 }
 
 .hero-logo {
-  max-height: 80px;
-  margin-bottom: 1.5rem;
+  max-height: 420px;     /* ↑ más grande que antes */
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  margin: 0 auto 1.5rem; /* ← centrado horizontal explícito */
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
@@ -410,7 +414,7 @@ h1, h2, h3 {
   }
 
   .hero-logo {
-    max-height: 60px;
+    max-height: 90px; /* ← ajuste para móviles */
   }
 }
 
