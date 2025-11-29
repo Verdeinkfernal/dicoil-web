@@ -6,32 +6,57 @@
 }
 
 :root {
-  --azul-institucional: #1A3A5F;
-  --tierra-volcanica: #8C4A2E;
-  --blanco-cálido: #F9F7F3;
-  --gris-piedra: #5A5A5A;
+  --azul-institucional: #12385B;   /* más profundo, más corporativo */
+  --azul-oscuro: #0D2A44;
+  --azul-claro: #1F5B89;
+
+  --tierra-volcanica: #7A422A;      /* tonos más sobrios */
+  --tierra-oscura: #5A2E1D;
+
+  --blanco-cálido: #F4F3EF;
+  --gris-piedra: #444;              /* más contrastado */
+  --gris-suave: #666;
+
   --verde-esperanza: #2D5D27;
+
+  --radius: 8px;
+  --shadow-soft: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-medium: 0 6px 18px rgba(0,0,0,0.12);
+  --shadow-deep: 0 12px 40px rgba(0,0,0,0.18);
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--gris-piedra);
   background-color: #fff;
 }
 
+/* TITULOS */
 h1, h2, h3 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
+  color: var(--azul-oscuro);
 }
 
+h1 {
+  font-size: 3.3rem;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: 2.6rem;
+  letter-spacing: -0.5px;
+}
+
+/* Container */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Skip link (accesibilidad) */
+/* Skip link */
 .skip-link {
   position: absolute;
   top: -40px;
@@ -48,75 +73,91 @@ h1, h2, h3 {
   top: 6px;
 }
 
-/* Hero */
+/* HERO — versión limpia y profesional */
+/* HERO — fondo arquitectónico difuminado, sin cuadro blanco */
 .hero {
   position: relative;
   height: 100vh;
-  background: url('https://images.unsplash.com/photo-1600585154084-4e5b10f5c710?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
+  color: var(--azul-oscuro);
+  overflow: hidden;
 }
 
-.hero-overlay {
+/* Capa de fondo: tu imagen, difuminada y escalada */
+.hero::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.25);
+  background: url('img/fondo-arquitectonico.jpg') no-repeat center center;
+  background-size: cover;
+  filter: blur(10px) brightness(0.9) contrast(1.05);
+  z-index: -2;
 }
 
+/* Capa de velo blanco suave: mejora contraste sin opacar el fondo */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.88);
+  z-index: -1;
+}
+
+/* Contenido centrado: logo + texto + botones */
 .hero-content {
+  position: relative;
   z-index: 2;
-  max-width: 900px;
+  max-width: 950px;
   padding: 0 20px;
-  text-align: center; /* ← asegura centrado total */
+  margin: 0 auto;
 }
 
 .hero-logo {
-  max-height: 420px;     /* ↑ más grande que antes */
-  max-width: 100%;
+  max-height: 400px;
+  margin: 0 auto 1.8rem;
   height: auto;
   width: auto;
-  margin: 0 auto 1.5rem; /* ← centrado horizontal explícito */
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  filter: none;
 }
 
 .hero h1 {
-  font-size: 3.2rem;
+  font-size: 3.4rem;
   margin-bottom: 1rem;
-  color: white;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  color: var(--azul-oscuro);
+  text-shadow: none;
+  line-height: 1.2;
 }
 
 .hero-subtitle {
-  font-size: 1.4rem;
-  margin-bottom: 2rem;
-  color: rgba(255,255,255,0.92);
+  font-size: 1.35rem;
+  margin-bottom: 2.2rem;
+  color: var(--gris-suave);
   font-weight: 300;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.hero-btns {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
+/* BOTONES */
 .btn {
   padding: 14px 28px;
-  border-radius: 4px;
+  border-radius: var(--radius);
   font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
-  display: inline-block;
   transition: all 0.3s ease;
-  border: none;
   cursor: pointer;
+  display: inline-block;
 }
 
 .btn-primary {
@@ -130,47 +171,41 @@ h1, h2, h3 {
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
 }
 
-/* ¿Por qué DICOIL? */
+/* POR QUÉ DICOIL */
 .por-que {
-  padding: 80px 0;
+  padding: 100px 0;
   background-color: var(--blanco-cálido);
 }
 
-.por-que h2 {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 1rem;
-  color: var(--azul-institucional);
-}
-
 .subtitle {
-  text-align: center;
   font-size: 1.2rem;
-  color: var(--gris-piedra);
+  color: var(--gris-suave);
   margin-bottom: 3rem;
+  text-align: center;
 }
 
 .valores-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 2.2rem;
 }
 
 .valor {
-  text-align: center;
   padding: 2rem;
   background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  transition: 0.3s ease;
+  text-align: center;
 }
 
 .valor:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-medium);
 }
 
 .valor-icon {
@@ -179,69 +214,52 @@ h1, h2, h3 {
 }
 
 .valor h3 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--azul-institucional);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
-/* Obras Públicas */
+/* OBRAS */
 .obras-publicas {
-  padding: 80px 0;
+  padding: 100px 0;
   background-color: white;
 }
 
 .obras-publicas h2 {
-  font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 1rem;
-  color: var(--azul-institucional);
+  margin-bottom: 2rem;
 }
 
 .galeria-obras {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.2rem;
 }
 
 .obra-card {
   background: white;
-  border-radius: 8px;
+  border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-soft);
+  transition: 0.3s ease;
 }
 
 .obra-card:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  transform: translateY(-5px);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-6px);
 }
 
 .obra-img {
-  height: 200px;
-  background: linear-gradient(135deg, var(--azul-institucional), #2c5282);
+  height: 220px;
+  background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-claro));
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-weight: bold;
-  font-size: 0.9rem;
-  text-align: center;
   padding: 0.5rem;
-}
-
-.obra-img.cba::before {
-  content: "Edif. CBA\nAmbato";
-  white-space: pre;
-}
-
-.obra-img.sangolqui::before {
-  content: "Registro\nSangolquí";
-  white-space: pre;
-}
-
-.obra-info {
-  padding: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .obra-info h3 {
@@ -252,7 +270,7 @@ h1, h2, h3 {
 
 .cliente {
   font-weight: 500;
-  color: var(--gris-piedra);
+  color: var(--gris-suave);
   margin-bottom: 1rem;
   font-size: 0.95rem;
 }
@@ -283,19 +301,24 @@ h1, h2, h3 {
   font-weight: 500;
 }
 
-/* El Legado */
+/* LEGADO */
 .legado {
   padding: 100px 0;
   background-color: var(--blanco-cálido);
+}
+
+.legado h2 {
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .legado-texto {
-  max-width: 800px;
+  max-width: 820px;
   margin: 0 auto;
-  font-size: 1.25rem;
-  line-height: 1.8;
+  font-size: 1.28rem;
+  line-height: 1.85;
   font-family: 'Cormorant Garamond', serif;
+  text-align: center;
 }
 
 .legado-texto p {
@@ -303,31 +326,27 @@ h1, h2, h3 {
 }
 
 .legado-texto strong {
-  font-size: 1.4rem;
   display: block;
-  margin-bottom: 1rem;
+  font-size: 1.4rem;
   color: var(--azul-institucional);
+  margin-bottom: 1rem;
 }
 
-/* Contacto */
+/* CONTACTO */
 .contacto {
-  padding: 80px 0;
-  background-color: #f8f9fa;
+  padding: 100px 0;
+  background-color: #F0F2F4;
 }
 
 .contacto h2 {
-  font-size: 2.2rem;
   text-align: center;
-  color: var(--azul-institucional);
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .contacto-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
-  align-items: start;
+  gap: 3rem;
 }
 
 .contacto-info h3 {
@@ -342,12 +361,12 @@ h1, h2, h3 {
 }
 
 .mapa-wrapper {
-  border-radius: 8px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Pie */
+/* PIE */
 .pie {
   background-color: var(--azul-institucional);
   color: white;
@@ -356,7 +375,7 @@ h1, h2, h3 {
   font-size: 0.95rem;
 }
 
-/* WhatsApp Flotante */
+/* WHATSAPP */
 .whatsapp-float {
   position: fixed;
   width: 60px;
@@ -364,67 +383,44 @@ h1, h2, h3 {
   bottom: 20px;
   right: 20px;
   background-color: #25D366;
-  color: white;
   border-radius: 50px;
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-  z-index: 1000;
+  box-shadow: var(--shadow-medium);
   text-decoration: none;
+  color: white;
+  font-size: 1.6rem;
+  z-index: 1000;
   display: none;
 }
 
-/* Enfoque para accesibilidad */
+/* ACCESIBILIDAD */
 :focus {
   outline: 3px solid var(--verde-esperanza);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.4rem;
+  .hero h1 { font-size: 2.6rem; }
+  .hero-content { padding: 3rem 2rem; }
+  .hero-logo { 
+    max-height: 110px;
+    min-height: 80px; /* ← clave: nunca se achica demasiado */
   }
-
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .hero-btns {
-    flex-direction: column;
-  }
-
-  .whatsapp-float {
-    display: flex;
-  }
-
-  .obra-img {
-    height: 160px;
-  }
-
-  .legado-texto {
-    padding: 0 20px;
-    font-size: 1.1rem;
-  }
-
-  .contacto-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-logo {
-    max-height: 90px; /* ← ajuste para móviles */
-  }
+  .hero-subtitle { font-size: 1.15rem; }
+  .contacto-grid { grid-template-columns: 1fr; }
+  .galeria-obras { gap: 1.5rem; }
 }
 
 @media (max-width: 480px) {
-  .hero h1 {
-    font-size: 2.0rem;
+  .hero h1 { font-size: 2.1rem; }
+  .hero-content { padding: 2.5rem 1.5rem; }
+  .hero-logo { 
+    max-height: 90px;
+    min-height: 70px;
   }
-
-  .btn {
-    padding: 12px 20px;
-    font-size: 0.95rem;
-  }
+  .btn { padding: 12px 22px; font-size: 0.95rem; }
+  .valores-grid { gap: 1.5rem; }
 }
